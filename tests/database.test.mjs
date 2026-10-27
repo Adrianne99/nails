@@ -52,12 +52,24 @@ test('instant prices are server enforced, orders confirmed immediately, fit rema
 });
 
 test('new reference prices and Philippine mobile numbers are enforced by the database',async()=>{
+ const existingOrders=(await db.query('select id,subtotal from orders order by id')).rows;
  await db.exec(await readFile(new URL('../supabase/migrations/005_more_references.sql',import.meta.url),'utf8'));
  await db.exec(await readFile(new URL('../supabase/migrations/006_security_validation.sql',import.meta.url),'utf8'));
+ await db.exec(await readFile(new URL('../supabase/migrations/007_reprice_catalog.sql',import.meta.url),'utf8'));
+ await db.exec(await readFile(new URL('../supabase/migrations/008_admin_eurie.sql',import.meta.url),'utf8'));
+ assert.deepEqual((await db.query('select id,subtotal from orders order by id')).rows,existingOrders);
  const refs=JSON.parse(await readFile(new URL('../src/inspirations.json',import.meta.url),'utf8'));
  assert.equal((await db.query('select count(*)::int as n from reference_prices')).rows[0].n,refs.length);
+ const storedPrices=new Map((await db.query('select id,price from reference_prices')).rows.map(row=>[row.id,row.price]));
+ for(const reference of refs)assert.equal(storedPrices.get(reference.id),reference.price,reference.id);
+ assert.deepEqual((await db.query('select min(price)::int as minimum,max(price)::int as maximum from reference_prices')).rows[0],{minimum:15000,maximum:25000});
+ assert.deepEqual((await db.query('select min(price+extra)::int as minimum,max(price+extra)::int as maximum from designs')).rows[0],{minimum:15000,maximum:25000});
+ assert.equal((await db.query("select count(*)::int as n from admin_emails where email='euriemeeb@gmail.com'")).rows[0].n,1);
  const p=refs[refs.length-1];const payload=orderData({reference_id:p.id,unit_price:p.price,phone:'+639171234567',preferred_date:'2099-05-07'});
  const order=await submit(payload);assert.equal((await db.query('select phone,subtotal from orders where id=$1',[order.id])).rows[0].phone,'+639171234567');
+ await assert.rejects(submit({...payload,request_key:crypto.randomUUID(),unit_price:30000,preferred_date:'2099-05-10'}),/price has changed/);
+ const custom=await submit(orderData({reference_url:'https://pinterest.com/pin/123/',custom_detail:'plain',unit_price:20000,preferred_date:'2099-05-11',phone:'+639171234567'}));
+ assert.equal((await db.query('select subtotal from orders where id=$1',[custom.id])).rows[0].subtotal,20000);
  await assert.rejects(submit({...payload,request_key:crypto.randomUUID(),phone:'09171234567',preferred_date:'2099-05-08'}),/Philippine mobile/);
  await assert.rejects(submit({...payload,request_key:crypto.randomUUID(),phone:'+639171234567',recipient:'X',preferred_date:'2099-05-09'}),/Enter your name/);
 });

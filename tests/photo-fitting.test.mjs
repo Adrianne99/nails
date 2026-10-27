@@ -38,5 +38,5 @@ test('render uses real reference pixels, omits controls in export, and supports 
 test('at least 500 distinct inspiration photos have local assets and Pinterest sources',async()=>{
  const refs=JSON.parse(await readFile(new URL('../src/inspirations.json',import.meta.url),'utf8'));
  assert.ok(refs.length>=500);assert.equal(new Set(refs.map(p=>p.id)).size,refs.length);assert.equal(new Set(refs.map(p=>p.image)).size,refs.length);
- for(const p of refs){assert.match(p.source,/^https:\/\/www\.pinterest\.com\/(?:pin\/\d+|[\w-]+\/[\w-]+)\/$/);assert.ok(p.name&&p.category);assert.ok(p.price>=20000&&p.price<=35000);const file=new URL('../public'+p.image,import.meta.url);assert.ok((await stat(file)).size>1000);}
+ for(const p of refs){assert.match(p.source,/^https:\/\/www\.pinterest\.com\/(?:pin\/\d+|[\w-]+\/[\w-]+)\/$/);assert.ok(p.name&&p.category);assert.ok(p.price>=15000&&p.price<=25000);const file=new URL('../public'+p.image,import.meta.url);assert.ok((await stat(file)).size>1000);}
 });

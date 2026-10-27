@@ -86,7 +86,26 @@ function Home({onDetail}:{onDetail:(d:Design)=>void}){const {go,designs}=useShop
  <section className="closing"><Flower2 size={28}/><p>Because a little self-love<br/>looks good on you.</p><button className="button" onClick={()=>go('gallery')}>Meet your next set <ArrowUpRight size={17}/></button></section>
  </>}
 export function DesignCard({design:d,onClick}:{design:Design;onClick:()=>void}){return <button className="design-card" onClick={onClick}><div className="design-image"><NailArt design={d}/><span className="design-tag">{d.category}</span><span className="card-arrow"><ArrowUpRight size={20}/></span></div><div className="design-caption"><div><h3>{d.name}</h3><span>Handmade · Made to order</span></div><span>{money(d.price+d.extra)}</span></div></button>}
-function Gallery({onDetail}:{onDetail:(d:Design)=>void}){const{designs,orderDesign}=useShop();const [filter,setFilter]=useState('All designs');return <section className="section gallery-page"><span className="eyebrow">PICK YOUR NEXT LITTLE OBSESSION</span><h1>The collection.</h1><p>Choose a reference, pick your fit, and order at the displayed price.</p><button className="button secondary" onClick={()=>orderDesign(designs.find(d=>d.available)||sampleDesigns[0],"custom")}>Bring my own reference <ArrowUpRight size={16}/></button><div className="tabs">{['All designs',...new Set(designs.map(d=>d.category))].map(c=><button key={c} className={filter===c?'selected':''} onClick={()=>setFilter(c)}>{filter===c&&<Check size={13}/>} {c}</button>)}</div><div className="design-grid">{designs.filter(d=>d.available&&(filter==='All designs'||d.category===filter)).map(d=><DesignCard key={d.id} design={d} onClick={()=>onDetail(d)}/>)}</div>{designs.length===0&&<div className="empty"><ShoppingBag/><h3>Something pretty is on its way.</h3><p>Eurie is preparing the collection. Check back soon.</p></div>}<p className="illustration-note">Pinterest reference photography · Pick a design and order at its displayed price.</p><InspirationGallery chooseLabel="Order this design" onChoose={photo=>orderDesign(designs.find(d=>d.available)||sampleDesigns[0],photo.id)}/></section>}
+function Gallery({onDetail}:{onDetail:(d:Design)=>void}) {
+  const {designs, orderDesign} = useShop();
+  const [filter, setFilter] = useState('All designs');
+  const available = designs.filter(design => design.available);
+  return <section className="section gallery-page">
+    <span className="eyebrow">PICK YOUR NEXT LITTLE OBSESSION</span>
+    <h1>The collection.</h1>
+    <p>Find a photo you love, choose your fit, and order at the displayed price.</p>
+    <button className="button secondary" onClick={() => orderDesign(available[0] || sampleDesigns[0], 'custom')}>Bring my own reference <ArrowUpRight size={16}/></button>
+    <InspirationGallery chooseLabel="Order this design" onChoose={photo => orderDesign(available[0] || sampleDesigns[0], photo.id)}/>
+    <div className="gallery-signatures">
+      <span className="eyebrow">CURATED BY EURIE</span>
+      <h2>Signature sets.</h2>
+      <p>A few ready-to-order favorites from the collection.</p>
+      <div className="tabs">{['All designs', ...new Set(designs.map(design => design.category))].map(item => <button key={item} className={filter === item ? 'selected' : ''} onClick={() => setFilter(item)}>{filter === item && <Check size={13}/>} {item}</button>)}</div>
+      <div className="design-grid">{available.filter(design => filter === 'All designs' || design.category === filter).map(design => <DesignCard key={design.id} design={design} onClick={() => onDetail(design)}/>)}</div>
+      {designs.length === 0 && <div className="empty"><ShoppingBag/><h3>Something pretty is on its way.</h3><p>Eurie is preparing the collection. Check back soon.</p></div>}
+    </div>
+  </section>;
+}
 
 
 
