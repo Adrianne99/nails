@@ -1,0 +1,104 @@
+# Added inspiration references
+
+530 Pinterest reference photographs are in the app (100 original pins and 430 added from public boards). The added images were reviewed in contact sheets to remove ads, collages, unrelated subjects, and duplicate frames; no images were generated for this collection. Pinterest alone cannot establish original authorship. These are inspiration, not Eurie’s portfolio. Original entries link to individual pins; newer entries link to their source board when Pinterest did not expose a stable individual pin URL. The complete per-image source is recorded in `src/inspirations.json`.
+
+- **Rose quartz details** — https://www.pinterest.com/pin/410460953600518985/
+- **Mint French tips** — https://www.pinterest.com/pin/410460953600518997/
+- **Soft white French** — https://www.pinterest.com/pin/410460953602480152/
+- **Rose gloss** — https://www.pinterest.com/pin/410460953602403486/
+- **Blush ombre** — https://www.pinterest.com/pin/410460953602495478/
+- **Lime accent nails** — https://www.pinterest.com/pin/410460953600474096/
+- **Pink summer tips** — https://www.pinterest.com/pin/410460953600474109/
+- **Milky pink shine** — https://www.pinterest.com/pin/410460953602502098/
+- **Botanical sage** — https://www.pinterest.com/pin/410460953601311839/
+- **Lilac chrome** — https://www.pinterest.com/pin/410460953600494824/
+- **Cobalt marble** — https://www.pinterest.com/pin/410460953600516075/
+- **Garden blooms** — https://www.pinterest.com/pin/410460953601311830/
+- **Tangerine gloss** — https://www.pinterest.com/pin/410460953600594583/
+- **White floral accent** — https://www.pinterest.com/pin/410460953600474089/
+- **Amber gold foil** — https://www.pinterest.com/pin/410460953600474098/
+- **Soft nude almond** — https://www.pinterest.com/pin/410460953593275786/
+- **Coral pink** — https://www.pinterest.com/pin/410460953602495480/
+- **Black evening nails** — https://www.pinterest.com/pin/338262622031866600/
+- **Little ghost** — https://www.pinterest.com/pin/338262622037606638/
+- **Classic burgundy** — https://www.pinterest.com/pin/338262622036524325/
+- **Clean nude gloss** — https://www.pinterest.com/pin/338262622037264338/
+- **Sheer blush** — https://www.pinterest.com/pin/338262622036868001/
+- **Pink sculpted details** — https://www.pinterest.com/pin/338262622036965531/
+- **Lace French** — https://www.pinterest.com/pin/338262622035036750/
+- **Wine almond** — https://www.pinterest.com/pin/338262622035874149/
+- **Berry foil** — https://www.pinterest.com/pin/338262622033163152/
+- **Pastel mosaic** — https://www.pinterest.com/pin/745979125821737220/
+- **Lemon accents** — https://www.pinterest.com/pin/745979125821647627/
+- **Pearl glaze** — https://www.pinterest.com/pin/745979125822067506/
+- **Soft metallic** — https://www.pinterest.com/pin/745979125821971096/
+- **Bright graphic tips** — https://www.pinterest.com/pin/745979125820942891/
+- **Tiny flowers** — https://www.pinterest.com/pin/745979125822577066/
+- **Violet sculpted tips** — https://www.pinterest.com/pin/745979125822280159/
+- **Turquoise jewelry** — https://www.pinterest.com/pin/745979125821737267/
+- **Pink charm** — https://www.pinterest.com/pin/745979125821661038/
+- **Natural French** — https://www.pinterest.com/pin/745979125821647638/
+- **Sunset coral** — https://www.pinterest.com/pin/745979125821737140/
+- **Ruby flowers** — https://www.pinterest.com/pin/745979125821737176/
+- **Red and black** — https://www.pinterest.com/pin/745979125821719772/
+- **Autumn florals** — https://www.pinterest.com/pin/745979125821102425/
+- **Barely pink** — https://www.pinterest.com/pin/458804280767512230/
+- **Pastel lilac** — https://www.pinterest.com/pin/458804280800857360/
+- **Pearl white** — https://www.pinterest.com/pin/458804280803719735/
+- **Pink polish** — https://www.pinterest.com/pin/458804280800676654/
+- **Deep wine gloss** — https://www.pinterest.com/pin/458804280763632496/
+- **Burgundy ornament** — https://www.pinterest.com/pin/458804280763473817/
+- **Dusty rose** — https://www.pinterest.com/pin/458804280764052963/
+- **Tiny heart** — https://www.pinterest.com/pin/458804280781790644/
+- **Sage green** — https://www.pinterest.com/pin/458804280811169133/
+- **Lilac sheen** — https://www.pinterest.com/pin/458804280812353487/
+- **Cloud white** — https://www.pinterest.com/pin/458804280799882100/
+- **Navy French** — https://www.pinterest.com/pin/458804280798315865/
+- **Soft silver** — https://www.pinterest.com/pin/458804280812759029/
+- **Pink almond** — https://www.pinterest.com/pin/458804280803815699/
+- **Natural warm nude** — https://www.pinterest.com/pin/458804280798255965/
+- **Emerald green** — https://www.pinterest.com/pin/458804280772382592/
+- **Matte wine** — https://www.pinterest.com/pin/458804280772312523/
+- **White lace** — https://www.pinterest.com/pin/458804280786486794/
+- **Forest green** — https://www.pinterest.com/pin/458804280801832822/
+- **Pink ribbed detail** — https://www.pinterest.com/pin/500814421090766358/
+- **Lemon milk** — https://www.pinterest.com/pin/500814421086906639/
+- **Small daisies** — https://www.pinterest.com/pin/500814421090103118/
+- **Rose nude** — https://www.pinterest.com/pin/500814421087112300/
+- **White botanical** — https://www.pinterest.com/pin/500814421087374848/
+- **Mirror chrome** — https://www.pinterest.com/pin/500814421090151428/
+- **Peach glaze** — https://www.pinterest.com/pin/500814421074212281/
+- **Pink chrome drops** — https://www.pinterest.com/pin/500814421089050878/
+- **Mixed metallic** — https://www.pinterest.com/pin/500814421087368580/
+- **Pastel press-ons** — https://www.pinterest.com/pin/500814421087056273/
+- **Yellow ceramic** — https://www.pinterest.com/pin/500814421087103598/
+- **Liquid silver** — https://www.pinterest.com/pin/500814421086931103/
+- **Earthy mix** — https://www.pinterest.com/pin/500814421082397605/
+- **Cherry red details** — https://www.pinterest.com/pin/500814421081120766/
+- **Soft pink florals** — https://www.pinterest.com/pin/500814421079072142/
+- **Nude short** — https://www.pinterest.com/pin/500814421084602979/
+- **Playful circles** — https://www.pinterest.com/pin/500814421084363898/
+- **Chocolate gloss** — https://www.pinterest.com/pin/500814421087369606/
+- **Little smiles** — https://www.pinterest.com/pin/377739487486721561/
+- **Blue summer flowers** — https://www.pinterest.com/pin/377739487506347826/
+- **Character tips** — https://www.pinterest.com/pin/377739487506358136/
+- **Lilac press-ons** — https://www.pinterest.com/pin/377739487506358001/
+- **Blue embellished tips** — https://www.pinterest.com/pin/377739487506347722/
+- **Matte taupe** — https://www.pinterest.com/pin/377739487494904101/
+- **Monochrome mini art** — https://www.pinterest.com/pin/377739487485246074/
+- **Pink daisies** — https://www.pinterest.com/pin/377739487490094031/
+- **Pink square** — https://www.pinterest.com/pin/377739487489490324/
+- **Soft nude tips** — https://www.pinterest.com/pin/377739487489125518/
+- **French minimal** — https://www.pinterest.com/pin/377739487486298356/
+- **Pink confetti** — https://www.pinterest.com/pin/377739487477956997/
+- **Rose marble** — https://www.pinterest.com/pin/377739487501977041/
+- **Blush flowers** — https://www.pinterest.com/pin/377739487501459140/
+- **White shimmer** — https://www.pinterest.com/pin/377739487489125520/
+- **Metallic taupe** — https://www.pinterest.com/pin/377739487487460338/
+- **Terracotta polish** — https://www.pinterest.com/pin/377739487485530203/
+- **Milk pink** — https://www.pinterest.com/pin/377739487489761274/
+- **Pastel dots** — https://www.pinterest.com/pin/377739487486308366/
+- **Pink glitter** — https://www.pinterest.com/pin/377739487485246108/
+- **Natural ivory** — https://www.pinterest.com/pin/377739487495838512/
+- **Black floral accents** — https://www.pinterest.com/pin/552183604331912025/
+- **Navy gold accent** — https://www.pinterest.com/pin/552183604331983775/
