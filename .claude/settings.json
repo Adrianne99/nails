@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sI https://nails-ruby.vercel.app/)",
+      "Bash(curl -s https://nails-ruby.vercel.app/)",
+      "Bash(grep -E '^index.*\\\\.\\(js|css\\)$')",
+      "Bash(curl -s https://nails-ruby.vercel.app/assets/index-CTXNLrxw.js)"
+    ]
+  }
+}
