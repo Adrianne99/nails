@@ -16,8 +16,8 @@ export function Studio(){
  const hands=media.filter(m=>m.owner_id===user?.id&&m.kind==='hand'),ownInspiration=media.filter(m=>m.owner_id===user?.id&&m.kind==='inspiration');
  const [photoId,setPhotoId]=useState(editPreview?.photo_id||hands[0]?.id||''),[inspirationId,setInspirationId]=useState(editPreview?.inspiration_id||'');
  const [placements,setPlacements]=useState<Placement[]>(editPreview?.placements||initialPlacements(selected.color,selected.pattern)),[active,setActive]=useState(0),[history,setHistory]=useState<Placement[][]>([]);
- const [sourceId,setSourceId]=useState(()=>{const saved=sessionStorage.getItem('eurie.reference');return editPreview?.placements.find(p=>p.texture)?.texture||(inspirations.some(p=>p.id===saved)?saved!:selected.id)});
- const [sourceFrame,setSourceFrame]=useState<NailFrame|null>(()=>editPreview?.placements.find(p=>p.texture)?.source||null),[fitPoints,setFitPoints]=useState<Point[]>([]);
+ const [sourceId,setSourceId]=useState(()=>{const saved=sessionStorage.getItem('eurie.reference');return editPreview?.placements?.find(p=>p.texture)?.texture||(inspirations.some(p=>p.id===saved)?saved!:selected.id)});
+ const [sourceFrame,setSourceFrame]=useState<NailFrame|null>(()=>editPreview?.placements?.find(p=>p.texture)?.source||null),[fitPoints,setFitPoints]=useState<Point[]>([]);
  const [mode,setMode]=useState<'fit'|'move'|'pan'>('move'),[zoom,setZoom]=useState(1),[pan,setPan]=useState({x:0,y:0}),[before,setBefore]=useState(false),[library,setLibrary]=useState(false);
  const [image,setImage]=useState<HTMLImageElement|null>(null),[textures,setTextures]=useState<Record<string,HTMLImageElement>>({}),[saved,setSaved]=useState(''),[feedback,setFeedback]=useState('Finding the nails…');
  // undefined while looking, null when no hand was found in the photo

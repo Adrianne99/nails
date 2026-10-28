@@ -30,6 +30,7 @@ export function OrderForm({close}:{close:()=>void}){
  const matchingSizes=sizes.filter(s=>s.owner_id===user?.id&&s.shape===form.shape&&s.length===form.length);
  const ownPreviews=previews.filter(p=>p.owner_id===user?.id);
  return <form onSubmit={e=>{e.preventDefault();void run(async()=>{
+  if(form.reference_id==='custom'&&!form.reference_url&&!form.reference_media_id)throw new Error('Paste a reference link or upload a photo of your design.');
   await mutate('order_submit',{...form,phone:normalizePhilippineMobile(form.phone),unit_price:unitPrice,design_id:selected.id,request_key:key});
   sessionStorage.removeItem('eurie.order-reference');await refresh();setOrderPreview('');close();go('orders');
  },'Order placed. Your nail price is locked in.')}}>
