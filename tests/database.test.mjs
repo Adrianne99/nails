@@ -56,7 +56,7 @@ test('new reference prices and Philippine mobile numbers are enforced by the dat
  await db.exec(await readFile(new URL('../supabase/migrations/005_more_references.sql',import.meta.url),'utf8'));
  await db.exec(await readFile(new URL('../supabase/migrations/006_security_validation.sql',import.meta.url),'utf8'));
  await db.exec(await readFile(new URL('../supabase/migrations/007_reprice_catalog.sql',import.meta.url),'utf8'));
- await db.exec(await readFile(new URL('../supabase/migrations/008_admin_eurie.sql',import.meta.url),'utf8'));
+ await db.exec(await readFile(new URL('../supabase/migrations/008_admin_eurie.sql',import.meta.url),'utf8')); await db.exec(await readFile(new URL('../supabase/migrations/009_library_refresh.sql',import.meta.url),'utf8'));
  assert.deepEqual((await db.query('select id,subtotal from orders order by id')).rows,existingOrders);
  const refs=JSON.parse(await readFile(new URL('../src/inspirations.json',import.meta.url),'utf8'));
  assert.equal((await db.query('select count(*)::int as n from reference_prices')).rows[0].n,refs.length);

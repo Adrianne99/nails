@@ -4,10 +4,12 @@ import {money} from './types';
 import collection from './inspirations.json';
 
 export type Inspiration = typeof collection[number];
-export const inspirations: Inspiration[] = collection;
+// Retired designs stay listed so past orders and saved try-ons can still find them; the gallery shows only `shown`.
+export const inspirations: (Inspiration & {retired?: boolean})[] = collection;
+export const shown = inspirations.filter(photo => !photo.retired);
 
 const categories = ['All', 'Soft & neutral', 'French', 'Floral', 'Chrome & shimmer', 'Color & details'];
-const categoryCovers = new Map(categories.slice(1).map(category => [category, inspirations.find(photo => photo.category === category)?.image]));
+const categoryCovers = new Map(categories.slice(1).map(category => [category, shown.find(photo => photo.category === category)?.image]));
 
 function hash(value: string) {
   let result = 2166136261;
@@ -41,7 +43,7 @@ export function InspirationGallery({onChoose, compact = false, chooseLabel = 'Tr
   const [detail, setDetail] = useState<Inspiration | null>(null);
   const filtered = useMemo(() => {
     const search = query.trim().toLocaleLowerCase();
-    return mixPhotos(inspirations.filter(photo =>
+    return mixPhotos(shown.filter(photo =>
       (category === 'All' || photo.category === category) &&
       `${photo.name} ${photo.category}`.toLocaleLowerCase().includes(search)
     ), seed, category);
@@ -49,7 +51,7 @@ export function InspirationGallery({onChoose, compact = false, chooseLabel = 'Tr
 
   return <div className={`inspiration-library ${compact ? 'compact-library' : ''}`}>
     <div className="inspiration-intro">
-      <div><span className="eyebrow">THE INSPIRATION LIBRARY · {inspirations.length} REAL PHOTOS</span><h2>Find your next set.</h2><p>Browse a style, then make it yours with Eurie.</p></div>
+      <div><span className="eyebrow">THE INSPIRATION LIBRARY · {shown.length} REAL PHOTOS</span><h2>Find your next set.</h2><p>Browse a style, then make it yours with Eurie.</p></div>
       <button className="inspiration-shuffle" onClick={() => {setSeed(value => value + 1); setLimit(32)}} aria-label="Show a different mix of designs"><Shuffle size={16}/> Surprise me</button>
     </div>
     <label className="inspiration-search"><Search size={19}/><input aria-label="Search inspiration photos" placeholder="Search colors, French tips, florals…" value={query} onChange={event => {setQuery(event.target.value); setLimit(32)}}/>{query && <button type="button" aria-label="Clear search" onClick={() => setQuery('')}><X size={16}/></button>}</label>

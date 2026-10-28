@@ -4,7 +4,7 @@
 
 - `npm test`: 46/46 checks passed, including Google-only login flow, server-enforced roles and prices, private photo access, sizing, order lifecycle, Philippine mobile normalization, and invalid input rejection.
 - `npm run build`: TypeScript and production build passed. Vite reports a non-blocking large-chunk warning.
-- All 530 reference images were present in the production build and passed image-file verification. The live `reference_prices` table contained 530 unique IDs, matched the local price checksum, and stayed within ₱200–₱350.
+- All 530 reference images were present in the production build and passed image-file verification. The live `reference_prices` table contained 530 unique IDs, matched the local price checksum, and stayed within ₱100-₱250.
 - Production preview loaded the gallery, searched a newly added reference, showed its ₱300 price, and prompted anonymous visitors to sign in before viewing orders. No browser console errors were recorded in the preview or local app.
 - Google sign-in returned successfully to the local app. The signed-in order page, saved hands, automatic try-on, artist desk, and shop settings loaded.
 - Placed one clearly marked test order for “Color and details inspiration 623.” It appeared immediately as confirmed at ₱300, without quote approval. The artist desk showed the reference photo and source. Cancelled the test order; after reload it remained cancelled and active orders returned from five to four. Test order ID begins `261af0c9`; its cancelled record remains in history.

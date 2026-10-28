@@ -1,6 +1,6 @@
 # Google login for Nails by Eurie
 
-Project: **nails-by-eurie** (`ituisqtlvgvqpwaootuv`). The local `.env.local` contains the project URL and public publishable key and is excluded from Git.
+Project: **nails-by-eurie** (`ituisqtlvgvqpwaootuv`). The local `.env.development` and `.env.production` files contain the project URL and public publishable key and are excluded from Git.
 
 Updated 23 October 2026: Google OAuth is enabled and worked in the local app. Email/password, phone, anonymous, and other sign-in providers are disabled. The database migrations through `006_security_validation.sql` are installed. The remaining OAuth work is to add and test the final deployed website origin.
 

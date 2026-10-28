@@ -2,7 +2,7 @@
 
 Customers select a collection design or inspiration, optionally paste an HTTPS reference link or privately upload an image, choose a provisional Small/Medium/Large fit or reuse their saved fit, and request a quote. Try-on is optional. Default payment remains cash at delivery/handover.
 
-Estimates per set: simple ₱200, French/light details ₱250, detailed ₱300, statement ₱350. These are proposed business prices, not image-based automatic cost recognition. The customer selects a detail level; the artist reviews feasibility and the final quote. Server checks limit new nail quotes to ₱200–₱350 per set; delivery fees are separate. Existing accepted orders retain their prior agreed prices.
+Estimates per set: simple ₱200, French/light details ₱250, detailed ₱300, statement ₱350. These are proposed business prices, not image-based automatic cost recognition. The customer selects a detail level; the artist reviews feasibility and the final quote. Server checks limit new nail quotes to ₱100-₱250 per set; delivery fees are separate. Existing accepted orders retain their prior agreed prices.
 
 Provisional charts (thumb/index/middle/ring/pinky): Small 2/5/4/6/9, Medium 1/5/4/6/8, Large 0/4/3/5/7. Source example: https://iridescentnailz.com/pages/what-size-nails-to-choose . These are not universal sizes or Eurie's verified stock. Customers see the caveat; both hands must be verified by the artist before production. Admins can edit preset numbers in Shop settings. New requests snapshot the chart, preserving old requests if the chart changes.
 
