@@ -19,8 +19,9 @@
 .inspiration-topic-all { background: linear-gradient(135deg,#f3c5d1,#dbaca5 45%,#b787a2); color: #fff; font-size: 23px; }
 .inspiration-count { display: flex; justify-content: space-between; gap: 10px; margin: 7px 0 17px; color: #877a76; font-size: 11px; }
 .inspiration-count span:first-child { color: #5f464d; font-weight: 600; }
-.inspiration-library .inspiration-masonry { columns: 4; column-gap: 12px; }
-.inspiration-library .inspiration-card { break-inside: avoid; display: inline-block; width: 100%; background: transparent; border: 0; border-radius: 0; overflow: visible; margin: 0 0 19px; }
+.inspiration-library .inspiration-masonry { columns: auto; display: flex; align-items: flex-start; gap: 12px; }
+.inspiration-column { flex: 1; min-width: 0; }
+.inspiration-library .inspiration-card { background: transparent; border: 0; border-radius: 0; overflow: visible; margin: 0 0 19px; }
 .inspiration-library .inspiration-image { position: relative; border-radius: 15px; background: #f0e7e3; overflow: hidden; }
 .inspiration-library .inspiration-image img { width: 100%; height: auto; max-height: none; object-fit: cover; transition: transform .3s ease; }
 .inspiration-library .inspiration-image:hover img { transform: scale(1.035); }
@@ -38,12 +39,10 @@
 .inspiration-detail-copy>a { display: inline-block; margin: 16px 0; font-size: 11px; color: #9e5267; }
 .inspiration-detail .modal-close { z-index: 2; background: #fffdf9e8; border-radius: 50%; }
 .compact-library .inspiration-intro h2 { font-size: 32px; }
-.compact-library .inspiration-masonry { columns: 3; }
 .gallery-signatures { margin-top: 70px; padding-top: 32px; border-top: 1px solid var(--line); }
 .gallery-signatures h2 { margin-bottom: 8px; }
 .gallery-signatures>p { font-size: 12px; }
 .gallery-signatures .tabs { margin: 20px 0 25px; }
-@media (max-width: 1000px) { .inspiration-library .inspiration-masonry { columns: 3; } }
 @media (max-width: 700px) {
   .gallery-page { padding-inline: 0; }
   .gallery-page>.eyebrow,.gallery-page>h1,.gallery-page>p,.gallery-page>.button { margin-left: 16px; margin-right: 16px; }
@@ -59,7 +58,7 @@
   .inspiration-topic img,.inspiration-topic-all { width: 33px; height: 34px; }
   .inspiration-count { margin: 6px 16px 13px; font-size: 10px; }
   .inspiration-count span:last-child { display: none; }
-  .inspiration-library .inspiration-masonry,.compact-library .inspiration-masonry { columns: 2; column-gap: 8px; margin: 0 8px; }
+  .inspiration-library .inspiration-masonry { gap: 8px; margin: 0 8px; }
   .inspiration-library .inspiration-card { margin-bottom: 15px; }
   .inspiration-library .inspiration-image { border-radius: 11px; }
   .inspiration-image-arrow { opacity: 1; transform: none; width: 26px; height: 26px; right: 7px; bottom: 7px; }
@@ -71,6 +70,6 @@
   .inspiration-detail-copy { padding: 18px 9px 5px; }
   .gallery-signatures { margin: 45px 16px 0; }
 }
-/* Touch scrolling triggers :hover, and a transform inside CSS columns makes mobile Safari split the card. */
+/* Touch scrolling triggers :hover; don't zoom photos under a passing finger. */
 @media (hover: none) { .inspiration-library .inspiration-image:hover img { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .inspiration-library .inspiration-image img,.inspiration-image-arrow { transition: none; } }

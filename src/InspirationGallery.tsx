@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {ArrowUpRight, Search, Shuffle, X} from 'lucide-react';
 import {money} from './types';
 import collection from './inspirations.json';
@@ -31,6 +31,12 @@ function mixPhotos(photos: Inspiration[], seed: number, selectedCategory: string
   return mixed;
 }
 
+// Matches the breakpoints in inspiration.css.
+const columnQueries = ['(max-width: 700px)', '(max-width: 1000px)'];
+function columnCount(compact: boolean) {
+  return matchMedia(columnQueries[0]).matches ? 2 : matchMedia(columnQueries[1]).matches || compact ? 3 : 4;
+}
+
 export function InspirationGallery({onChoose, compact = false, chooseLabel = 'Try this photo'}: {
   onChoose: (photo: Inspiration) => void;
   compact?: boolean;
@@ -41,6 +47,14 @@ export function InspirationGallery({onChoose, compact = false, chooseLabel = 'Tr
   const [limit, setLimit] = useState(32);
   const [seed, setSeed] = useState(0);
   const [detail, setDetail] = useState<Inspiration | null>(null);
+  const [columns, setColumns] = useState(() => columnCount(compact));
+  useEffect(() => {
+    const update = () => setColumns(columnCount(compact));
+    const queries = columnQueries.map(query => matchMedia(query));
+    queries.forEach(query => query.addEventListener('change', update));
+    update();
+    return () => queries.forEach(query => query.removeEventListener('change', update));
+  }, [compact]);
   const filtered = useMemo(() => {
     const search = query.trim().toLocaleLowerCase();
     return mixPhotos(shown.filter(photo =>
@@ -57,7 +71,8 @@ export function InspirationGallery({onChoose, compact = false, chooseLabel = 'Tr
     <label className="inspiration-search"><Search size={19}/><input aria-label="Search inspiration photos" placeholder="Search colors, French tips, florals…" value={query} onChange={event => {setQuery(event.target.value); setLimit(32)}}/>{query && <button type="button" aria-label="Clear search" onClick={() => setQuery('')}><X size={16}/></button>}</label>
     <div className="inspiration-topics" aria-label="Browse nail styles">{categories.map(item => <button key={item} className={`inspiration-topic ${category === item ? 'selected' : ''}`} aria-pressed={category === item} onClick={() => {setCategory(item); setLimit(32)}}>{item === 'All' ? <span className="inspiration-topic-all">✦</span> : <img src={categoryCovers.get(item)} alt="" loading="lazy"/>}<span>{item === 'All' ? 'All ideas' : item}</span></button>)}</div>
     <div className="inspiration-count"><span>{filtered.length} ideas to explore</span><span>Reference photography · Eurie makes your set</span></div>
-    <div className="inspiration-masonry">{filtered.slice(0, limit).map(photo => <article className="inspiration-card" key={photo.id}><button className="inspiration-image" onClick={() => setDetail(photo)} aria-label={`View ${photo.name}, ${money(photo.price)} per set`}><img src={photo.image} alt={`${photo.name} nail reference`} loading="lazy" decoding="async"/><span className="inspiration-image-arrow"><ArrowUpRight size={17}/></span></button><div className="inspiration-caption"><h3>{photo.name}</h3><strong>{money(photo.price)}</strong></div></article>)}</div>
+    {/* Fixed columns, filled in turn, so loading more photos never moves the cards already on screen. */}
+    <div className="inspiration-masonry">{Array.from({length: columns}, (_, column) => <div className="inspiration-column" key={column}>{filtered.slice(0, limit).filter((_, index) => index % columns === column).map(photo => <article className="inspiration-card" key={photo.id}><button className="inspiration-image" onClick={() => setDetail(photo)} aria-label={`View ${photo.name}, ${money(photo.price)} per set`}><img src={photo.image} alt={`${photo.name} nail reference`} loading="lazy" decoding="async"/><span className="inspiration-image-arrow"><ArrowUpRight size={17}/></span></button><div className="inspiration-caption"><h3>{photo.name}</h3><strong>{money(photo.price)}</strong></div></article>)}</div>)}</div>
     {filtered.length === 0 && <p className="empty">No matches. Try another color or style.</p>}
     {limit < filtered.length && <button className="button secondary load-inspiration" onClick={() => setLimit(value => value + 32)}>See more ideas <span>({filtered.length - limit} left)</span></button>}
     {detail && <div className="modal-backdrop" onClick={event => {if (event.target === event.currentTarget) setDetail(null)}}><section className="modal inspiration-detail" role="dialog" aria-modal="true" aria-label={detail.name}><button className="modal-close icon-button" aria-label="Close inspiration" onClick={() => setDetail(null)}><X/></button><img src={detail.image} alt={`${detail.name} nail reference`}/><div className="inspiration-detail-copy"><span className="eyebrow">{detail.category}</span><h2>{detail.name}</h2><p>{money(detail.price)} per set · final nail price</p><a href={detail.source} target="_blank" rel="noreferrer">View original Pinterest {detail.sourceKind === 'board' ? 'board' : 'pin'} ↗</a><button className="button full" onClick={() => {onChoose(detail); setDetail(null)}}>{chooseLabel} <ArrowUpRight size={16}/></button></div></section></div>}
