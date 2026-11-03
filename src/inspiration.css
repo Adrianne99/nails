@@ -20,7 +20,7 @@
 .inspiration-count { display: flex; justify-content: space-between; gap: 10px; margin: 7px 0 17px; color: #877a76; font-size: 11px; }
 .inspiration-count span:first-child { color: #5f464d; font-weight: 600; }
 .inspiration-library .inspiration-masonry { columns: 4; column-gap: 12px; }
-.inspiration-library .inspiration-card { break-inside: avoid; background: transparent; border: 0; border-radius: 0; overflow: visible; margin: 0 0 19px; }
+.inspiration-library .inspiration-card { break-inside: avoid; display: inline-block; width: 100%; background: transparent; border: 0; border-radius: 0; overflow: visible; margin: 0 0 19px; }
 .inspiration-library .inspiration-image { position: relative; border-radius: 15px; background: #f0e7e3; overflow: hidden; }
 .inspiration-library .inspiration-image img { width: 100%; height: auto; max-height: none; object-fit: cover; transition: transform .3s ease; }
 .inspiration-library .inspiration-image:hover img { transform: scale(1.035); }
@@ -71,4 +71,6 @@
   .inspiration-detail-copy { padding: 18px 9px 5px; }
   .gallery-signatures { margin: 45px 16px 0; }
 }
+/* Touch scrolling triggers :hover, and a transform inside CSS columns makes mobile Safari split the card. */
+@media (hover: none) { .inspiration-library .inspiration-image:hover img { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .inspiration-library .inspiration-image img,.inspiration-image-arrow { transition: none; } }
